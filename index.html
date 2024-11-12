@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <h1>Przyklad dialogu modalnego</h1>
+    <button id="onBeginning" onclick="Pokaz()">Klikjnij dla dialogu</button>
+
+    <dialog id="Dialog">
+        <label id="Label" for="inputDialog">Podaj dane:</label>
+        <input id="inputDialog">
+        <button onclick="Pobierz()" type="submit">OK</button>
+    </dialog>
+
+    <br>
+
+    <p id="Output"></p>
+
+</body>
+
+<script>
+    const Dialog = document.getElementById("Dialog")
+    const Button = document.getElementById("onBeginning")
+    const Input = document.getElementById("inputDialog")
+    const Label = document.getElementById("Label")
+
+    const Output = document.getElementById("Output")
+    function Pokaz() {
+        Button.style = "display: none;"
+        Dialog.showModal()
+    }
+
+    function Pobierz() {
+        if (Input.value) {
+            Input.value = ""
+            Label.style = "color: green;"
+            Dialog.close()
+
+            Output.innerHTML = "Podane dane: " + Input.value
+
+        } else {
+            Label.style = "color: red;"
+        }
+    }
+
+</script>
+
+</html>
